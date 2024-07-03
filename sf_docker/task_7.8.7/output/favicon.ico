@@ -1,0 +1,27 @@
+<!doctype html><html lang="en-us"><head><title>Course | Skillfactory</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="shortcut icon" href="https://lms.skillfactory.ru/static/edx-theme/images/favicon.ico" type="image/x-icon"/><script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(91593102, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+      });</script><noscript><div><img src="https://mc.yandex.ru/watch/91593102" style="position:absolute; left:-9999px;" alt=""/></div></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-T4T8K8RLJL"></script><script>window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T4T8K8RLJL');</script><script>window.FOQUZ_SDK = {
+        preventImmediateDisplay: true,
+        openWidget() {},
+      };
+
+      (function(f,o,q,u,z) {
+        u=o.createElement('script');
+        z=o.getElementsByTagName('script')[0];
+        u.async=1;
+        u.src=q + "?t=" + Date.now();
+        z ? z.parentNode.insertBefore(u, z) : o.head.appendChild(u);
+      }) (window,document,'https://foquz.ru/widgets/poll/widget.js')</script><script defer="defer" src="/learning/runtime.45ae50438234c89dfc42.js"></script><script defer="defer" src="/learning/186.ed0a454ef63d000898de.js"></script><script defer="defer" src="/learning/app.2e909b96d31005f57eac.js"></script><link href="/learning/186.ed0a454ef63d000898de.css" rel="stylesheet"><link href="/learning/app.2e909b96d31005f57eac.css" rel="stylesheet"></head><body><div id="root"></div></body></html>
