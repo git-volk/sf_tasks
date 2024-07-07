@@ -1,0 +1,53 @@
+---
+- name: Setup PostgreSQL
+  hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Ensure Ansible temporary directory exists with correct permissions
+      file:
+        path: /var/lib/postgresql/.ansible/tmp
+        state: directory
+        owner: postgres
+        group: postgres
+        mode: '0700'
+
+    - name: Install PostgreSQL
+      apt:
+        name: postgresql
+        state: present
+
+    - name: Install psycopg2 via apt
+      apt:
+        name: python3-psycopg2
+        state: present
+
+    - name: Start PostgreSQL service
+      service:
+        name: postgresql
+        state: started
+        enabled: yes
+
+    - name: Create PostgreSQL user
+      become_user: postgres
+      community.postgresql.postgresql_user:
+        name: user_sf
+        password: 123
+
+    - name: Create PostgreSQL database
+      become_user: postgres
+      community.postgresql.postgresql_db:
+        name: user_sf_db
+        owner: user_sf
+        encoding: UTF8
+        lc_collate: en_US.UTF-8
+        lc_ctype: en_US.UTF-8
+
+    - name: Grant all privileges on database to user
+      become_user: postgres
+      community.postgresql.postgresql_privs:
+        db: user_sf_db
+        role: user_sf
+        type: database
+        privs: ALL
