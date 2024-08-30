@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my_app_chart.fullname" . }}-db
+  labels:
+    {{- include "my_app_chart.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "my_app_chart.fullname" . }}-db
+  template:
+    metadata:
+      labels:
+        app: {{ include "my_app_chart.fullname" . }}-db
+    spec:
+      containers:
+        - name: postgresql
+          image: "postgres:13-alpine"
+          ports:
+            - name: db
+              containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: {{ .Values.env.DB_NAME }}
+            - name: POSTGRES_USER
+              value: {{ .Values.env.DB_USER }}
+            - name: POSTGRES_PASSWORD
+              value: {{ .Values.env.DB_PASS }}
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: {{ include "my_app_chart.fullname" . }}-pvc

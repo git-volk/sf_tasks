@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "my_app_chart.fullname" . }}-db
+  labels:
+    {{- include "my_app_chart.labels" . | nindent 4 }}
+spec:
+  ports:
+    - port: 5432
+      targetPort: db
+  selector:
+    app: {{ include "my_app_chart.fullname" . }}-db

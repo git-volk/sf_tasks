@@ -1,0 +1,20 @@
+---
+- name: Install Prometheus and Exporters
+  hosts: srv
+  become: yes
+  roles:
+    - name: prometheus.prometheus.prometheus
+      vars:
+        prometheus_version: "2.53.2"  # Укажите нужную версию Prometheus
+        prometheus_config: "/etc/prometheus/prometheus.yml"
+        prometheus_listen_address: "0.0.0.0:9090"
+      
+    - name: prometheus.prometheus.blackbox_exporter
+      vars:
+        blackbox_exporter_version: "0.25.0"  # Укажите нужную версию Blackbox Exporter
+        blackbox_exporter_listen_address: "0.0.0.0:9115"
+
+    - name: prometheus.prometheus.node_exporter
+      vars:
+        node_exporter_version: "1.8.2"  # Укажите нужную версию Node Exporter
+        node_exporter_listen_address: "0.0.0.0:9100"

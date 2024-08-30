@@ -1,0 +1,53 @@
+replicaCount: 2
+
+image:
+  repository: gitvolk/my_app
+  tag: 123
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 3003
+  nodePort: 30003
+
+ingress:
+  enabled: false
+
+resources: {}
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 30
+  timeoutSeconds: 5
+
+readinessProbe:
+  httpGet:
+    path: /readiness
+    port: http
+  initialDelaySeconds: 30
+  timeoutSeconds: 5
+
+postgresql:
+  enabled: true
+  image:
+    repository: postgres
+    tag: 13-alpine
+  postgresqlDatabase: tutorial-dev
+  postgresqlUsername: vinhle
+  postgresqlPassword: password
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: "default"
+
+env:
+  DB_HOST: "my-app-release-my-app-chart-db"
+  DB_NAME: "tutorial-dev"
+  DB_USER: "vinhle"
+  DB_PASS: "password"
+
+serviceAccount:
+  create: true
+  name: my-app-release
